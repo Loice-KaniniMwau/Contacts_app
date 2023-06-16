@@ -33,7 +33,7 @@
             android:id="@+id/etName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="hint" />
+            android:hint="Enter Name" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -51,7 +51,7 @@
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="hint" />
+            android:hint="Enter Email" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -69,13 +69,13 @@
             android:id="@+id/etNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="hint" />
+            android:hint="Enter Number" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btAddContact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="264dp"
+        android:layout_height="103dp"
         android:layout_marginStart="123dp"
         android:layout_marginTop="34dp"
         android:layout_marginEnd="197dp"
