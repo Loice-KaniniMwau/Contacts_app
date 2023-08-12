@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">twitterClone</string>
+    <string name="enter_first_name">enter first name</string>
+    <string name="enter_email">enter email</string>
+    <string name="enter_phone_number">enter phone number</string>
 </resources>
