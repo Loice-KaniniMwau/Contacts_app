@@ -10,7 +10,7 @@ import com.loice.twitterclone.model.Contacts_Data
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 
-class TweetAdapter(var contact_list:List<Contacts_Data>,val context:Context):RecyclerView.Adapter<ContactsViewHolder>() {
+class ContactsAdapter(var contact_list:List<Contacts_Data>,val context:Context):RecyclerView.Adapter<ContactsViewHolder>() {
     lateinit var contactListBinding: ContactListBinding
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactsViewHolder {
         val binding=

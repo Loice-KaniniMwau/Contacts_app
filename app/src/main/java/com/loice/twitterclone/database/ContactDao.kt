@@ -2,10 +2,12 @@ package com.loice.twitterclone.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.loice.twitterclone.model.Contacts_Data
+import android.provider.ContactsContract.Contacts as Contacts
 
 @Dao
  interface ContactDao {
@@ -20,9 +22,10 @@ import com.loice.twitterclone.model.Contacts_Data
     @Query("SELECT * FROM Contacts WHERE contactId = :contactId")
     fun getContactById(contactId: Int): LiveData<Contacts_Data>
 
-    @Query("DELETE  FROM Contacts WHERE contactId = :contactId")
-     fun deleteContact(contactId: Int)
+//a query method for deleting a contact with the annotation @Delete
+
+    @Delete
+    suspend fun deleteContactById(contact: Contacts_Data)
 
 }
 
-//defined a query for getting an element by id

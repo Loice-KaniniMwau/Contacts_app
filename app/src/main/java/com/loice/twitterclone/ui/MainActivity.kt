@@ -35,9 +35,9 @@ class MainActivity : AppCompatActivity() {
 
 
     fun displayContacts(contactList: List<Contacts_Data>) {
-        val tweetAdapter = TweetAdapter(contactList, this)
+        val contactsAdapter = ContactsAdapter(contactList, this)
         binding.rvContacts.layoutManager = LinearLayoutManager(this)
-        binding.rvContacts.adapter = tweetAdapter
+        binding.rvContacts.adapter =contactsAdapter
 
     }
 

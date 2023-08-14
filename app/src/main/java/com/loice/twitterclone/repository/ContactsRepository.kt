@@ -9,6 +9,7 @@ import kotlinx.coroutines.withContext
 
 class ContactsRepository {
     val database=ContactsDB.getDatabase(MyContactsApp.appContext)
+
    suspend fun saveContact(contact:Contacts_Data){
         withContext(Dispatchers.IO){
             database.getContactDao().insertContact(contact)
@@ -22,10 +23,12 @@ class ContactsRepository {
     fun getContactById(contactId: Int): LiveData<Contacts_Data> {
         return database.getContactDao().getContactById(contactId)
     }
-   fun deleteContact(contactId: Int) {
-        return database.getContactDao().deleteContact(contactId)
-//       withContext(Dispatchers.IO){
-//           database.getContactDao().deleteContact(contactId)
-//       }
+   suspend fun deleteContact(contact: Contacts_Data) {
+       return database.getContactDao().deleteContactById(contact)
+
     }
 }
+
+//the coroutines are for separation of concerns
+//such that the save contact ,get all contacts,delete contact and contact details are executed on the IO thread as opposed to the main thread
+//this provides for writing clean code

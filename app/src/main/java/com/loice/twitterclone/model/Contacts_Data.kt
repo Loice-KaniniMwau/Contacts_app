@@ -17,5 +17,3 @@ data class Contacts_Data(
 //    var otherNumber:String,
 
 )
-//a data class to define what our details will be ..eg name ,number etc
-//the table name

@@ -21,14 +21,9 @@ class ContactsViewModel:ViewModel() {
     fun getContactById(contactId: Int): LiveData<Contacts_Data> {
        return contactsRepository.getContactById(contactId)
     }
-//  suspend fun deleteContact(contactId: Int) {
-//        return contactsRepository.deleteContact(contactId)
-//    }
- fun deleteContact(contactId: Int) {
-    return contactsRepository.deleteContact(contactId)
-//    viewModelScope.launch {
-//        contactsRepository.deleteContact(contactId)
-//    }
+
+ suspend fun deleteContact(contact: Contacts_Data) {
+    return contactsRepository.deleteContact(contact)
 }
 
 }

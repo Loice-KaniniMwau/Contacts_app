@@ -25,5 +25,3 @@ abstract class ContactsDB: RoomDatabase() {
 
 }
 
-//create an instance of the room datanbse
-//a single instance that can be reused
