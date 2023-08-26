@@ -8,7 +8,7 @@ import com.loice.twitterclone.repository.ContactsRepository
 import kotlinx.coroutines.launch
 
 class ContactsViewModel:ViewModel() {
-    val contactsRepository=ContactsRepository()
+   private val contactsRepository=ContactsRepository()
     fun saveContact(contact:Contacts_Data){
         viewModelScope.launch {
             contactsRepository.saveContact(contact)
@@ -25,6 +25,10 @@ class ContactsViewModel:ViewModel() {
  suspend fun deleteContact(contact: Contacts_Data) {
     return contactsRepository.deleteContact(contact)
 }
+suspend fun updateContact(contactId: Int,name: String, phoneNumber: String, email: String){
+    return contactsRepository.editContact(contactId,name,phoneNumber,email)
+}
+
 
 }
 

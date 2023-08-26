@@ -6,8 +6,8 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import com.loice.twitterclone.model.Contacts_Data
-import android.provider.ContactsContract.Contacts as Contacts
 
 @Dao
  interface ContactDao {
@@ -26,6 +26,11 @@ import android.provider.ContactsContract.Contacts as Contacts
 
     @Delete
     suspend fun deleteContactById(contact: Contacts_Data)
+
+    @Update
+    suspend fun updateContact(contact: Contacts_Data):Int
+
+
 
 }
 

@@ -1,5 +1,6 @@
 package com.loice.twitterclone.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -21,42 +22,44 @@ import kotlinx.coroutines.withContext
 class ContactDetailsActivity : AppCompatActivity() {
     var contactId = 0
     private lateinit var viewModel: ContactsViewModel
-    val contactsRepository= ContactsRepository()
 
-    lateinit var binding: ActivityContactDetailsBinding
+
+  private lateinit var binding: ActivityContactDetailsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityContactDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
-
-
-
         viewModel = ContactsViewModel()
-        val contactId = intent.getIntExtra("CONTACT_ID", 0)
+        val contactId=intent.getIntExtra("CONTACT_ID",0)
         viewModel.getContactById(contactId).observe(this, Observer { contact ->
             binding.btDeleteContact.setOnClickListener {
                 CoroutineScope(Dispatchers.IO).launch {
                     deleteContact(contact)
                 }
-
             }
-
             if (contact != null) {
                 displayContactDetails(contact)
+                binding.ivEditContact.setOnClickListener {
+                    val editIntent = Intent(this, EditContactActivity::class.java)
+                    editIntent.putExtra("CONTACT_ID", contact.contactId)
+                    startActivity(editIntent)
+                }
 
-            } else {
-                Toast.makeText(this, "Contact not found", Toast.LENGTH_SHORT).show()
+
+
             }
+
+
         })
 
     }
 
     private fun displayContactDetails(contact: Contacts_Data) {
-        binding.tvName.text = contact.name
-        binding.tvOtherContact.text = contact.phoneNumber
-        binding.tvEmail.text=contact.email
+        binding.tvName.text = contact.name.toString()
+        binding.tvOtherContact.text = contact.phoneNumber.toString()
+        binding.tvEmail.text=contact.email.toString()
 
         if (!contact.imageUrl.isNullOrEmpty()) {
             Picasso
@@ -68,11 +71,12 @@ class ContactDetailsActivity : AppCompatActivity() {
                 .into(binding.imageView)
         }
     }
-  suspend fun deleteContact(contact: Contacts_Data) {
+ private suspend fun deleteContact(contact: Contacts_Data) {
         viewModel.deleteContact(contact)
-        Toast.makeText(this, "Contact deleted", Toast.LENGTH_SHORT).show()
         finish()
     }
+
+
 
 
 

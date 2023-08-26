@@ -11,9 +11,9 @@ data class Contacts_Data(
     @PrimaryKey(autoGenerate = true) @NonNull var contactId: Int,
     var name: String,
     var phoneNumber: String,
-//    var location:String,
+
     var email: String,
     var imageUrl: String?,
-//    var otherNumber:String,
+
 
 )
